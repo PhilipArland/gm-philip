@@ -1,50 +1,74 @@
-* {
-    margin: 0;
-    padding: 0;
+/* =========================
+   GLOBAL
+========================= */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 body {
+    margin: 0;
     font-family: Inter, "Segoe UI", Arial, sans-serif;
-    background: #fff
+    background: #fff;
+    overflow-x: hidden;
 }
 
-main {
-    width: 900px;
-    margin: auto;
+/* =========================
+   INTRO
+========================= */
+.intro {
+    width: 100%;
+    margin: 0;
+    padding: 2rem 1rem;
+    text-align: center;
 }
 
 .intro h1 {
     color: #071544;
-    font-size: 3rem;
-    letter-spacing: -.04em
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.tip {
+    color: #6b7280;
 }
 
 .tip span {
     color: #d5a33b;
 }
 
+/* =========================
+   PRODUCT DISPLAY
+========================= */
 .display {
     position: relative;
-    width: 900px;
-    margin: auto;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .display>img {
     display: block;
     width: 100%;
-    height: auto
+    height: auto;
 }
 
+/* =========================
+   HOTSPOTS
+========================= */
 .hotspot {
     position: absolute;
     z-index: 2;
     padding: 0;
-    border: 2px solid red;
-    /* border: 2px solid transparent; */
+    border: 2px solid transparent;
     background: transparent;
     cursor: pointer;
-    transition: background .2s, border-color .2s, box-shadow .2s
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .hotspot:hover,
@@ -52,9 +76,10 @@ main {
     border-color: #d5a33b;
     background: #d5a33b18;
     box-shadow: 0 0 0 3px #d5a33b25;
-    outline: none
+    outline: none;
 }
 
+/* Original hotspot positions preserved */
 .m1,
 .m2,
 .m3,
@@ -62,29 +87,29 @@ main {
 .m6,
 .m7,
 .m8 {
-    width: 11.5%
+    width: 11.5%;
 }
 
 .m1,
 .m2,
 .m3 {
     top: 16%;
-    height: 22%
+    height: 22%;
 }
 
 .m1,
 .m5 {
-    left: 26.4%
+    left: 26.4%;
 }
 
 .m2,
 .m6 {
-    left: 38.2%
+    left: 38.2%;
 }
 
 .m3,
 .m7 {
-    left: 50.2%
+    left: 50.2%;
 }
 
 .m4 {
@@ -92,13 +117,13 @@ main {
     left: 61.8%;
     width: 12%;
     height: 21.8%;
-    border-radius: 50%
+    border-radius: 50%;
 }
 
 .m8 {
     top: 39.5%;
     left: 62%;
-    height: 23%
+    height: 23%;
 }
 
 .m5,
@@ -106,6 +131,44 @@ main {
 .m7,
 .m8 {
     top: 39.5%;
-    height: 22.5%
+    height: 22.5%;
 }
 
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 991.98px) {
+    .intro {
+        padding: 1.75rem 1rem;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 575.98px) {
+    .intro {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .intro h1 {
+        font-size: clamp(1.6rem, 6vw, 2rem);
+    }
+
+    .tip {
+        font-size: 0.9rem;
+    }
+
+    .hotspot {
+        border-width: 1px;
+    }
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+@media (prefers-reduced-motion: reduce) {
+    .hotspot {
+        transition: none;
+    }
+}
