@@ -45,7 +45,7 @@ body {
 .display {
     position: relative;
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -62,7 +62,8 @@ body {
     position: absolute;
     z-index: 2;
     padding: 0;
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
+    border: 2px solid red;
     background: transparent;
     cursor: pointer;
     transition:
@@ -170,5 +171,20 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .hotspot {
         transition: none;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    .display {
+        width: 600px;
+        max-width: none;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .display > img {
+        width: 600px;
+        max-width: none;
     }
 }
