@@ -45,11 +45,11 @@ body {
 .display {
     position: relative;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin-inline: auto;
 }
 
-.display>img {
+.display > img {
     display: block;
     width: 100%;
     height: auto;
@@ -88,7 +88,7 @@ body {
 .m6,
 .m7,
 .m8 {
-    width: 11.5%;
+    width: 18%;
 }
 
 .m1,
@@ -100,12 +100,12 @@ body {
 
 .m1,
 .m5 {
-    left: 26.4%;
+    left: 12.4%;
 }
 
 .m2,
 .m6 {
-    left: 38.2%;
+    left: 31.2%;
 }
 
 .m3,
@@ -115,16 +115,14 @@ body {
 
 .m4 {
     top: 15.8%;
-    left: 61.8%;
-    width: 12%;
+    left: 68.8%;
+    width: 19%;
     height: 21.8%;
     border-radius: 50%;
 }
 
 .m8 {
-    top: 39.5%;
-    left: 62%;
-    height: 23%;
+    left: 69.4%;
 }
 
 .m5,
@@ -171,20 +169,5 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .hotspot {
         transition: none;
-    }
-}
-
-
-@media (max-width: 575.98px) {
-    .display {
-        width: 600px;
-        max-width: none;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .display > img {
-        width: 600px;
-        max-width: none;
     }
 }
