@@ -33,20 +33,19 @@
 
                         <button class="hotspot m1" data-product="0" aria-label="View LUX mirror"></button>
 
-                        <button class="hotspot m2" data-product="1" aria-label="View ECLIPSE mirror"></button>
+                        <!-- <button aria-label="View ECLIPSE mirror"></button>
 
-                        <button class="hotspot m3" data-product="2" aria-label="View LUMIÈRE mirror"></button>
+                        <button aria-label="View LUMIÈRE mirror"></button> -->
 
-                        <button class="hotspot m4" data-product="3" aria-label="View ALLURE mirror"></button>
+                        <button class="hotspot m4" data-product="1" aria-label="View ALLURE mirror"></button>
 
-                        <button class="hotspot m5" data-product="4" aria-label="View HOLLYWOOD mirror"></button>
+                        <!-- <button aria-label="View HOLLYWOOD mirror"></button>
 
-                        <button class="hotspot m6" data-product="5" aria-label="View ETCH mirror"></button>
+                        <button aria-label="View ETCH mirror"></button>
 
-                        <button class="hotspot m7" data-product="6" aria-label="View LED strip mirror"></button>
+                        <button aria-label="View LED strip mirror"></button>
 
-                        <button class="hotspot m8" data-product="7"
-                            aria-label="View bevel and faucet demo mirror"></button>
+                        <button aria-label="View bevel and faucet demo mirror"></button> -->
                     </div>
                 </div>
             </div>
@@ -57,19 +56,8 @@
     <section class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="productName" aria-hidden="true"
         inert>
 
-        <header class="viewer-header">
-            <div>
-                <div class="viewer-brand">GRAND MIRRORS</div>
-                <h2 id="productName">LUX Mirror</h2>
-            </div>
-
-            <button type="button" class="viewer-close" id="closeViewer" aria-label="Close product viewer">
-                &times;
-            </button>
-        </header>
 
         <div class="viewer-content">
-            <!-- LEFT: 3D MODEL -->
             <div class="viewer-stage">
                 <model-viewer id="modelCanvas" src="assets/models/lux.glb" alt="3D mirror model" camera-controls
                     auto-rotate shadow-intensity="1" interaction-prompt="auto" touch-action="pan-y" exposure="1">
@@ -82,21 +70,37 @@
 
             <!-- RIGHT: PRODUCT DETAILS -->
             <aside class="viewer-panel">
+                <button type="button" class="viewer-close" id="closeViewer" aria-label="Close product viewer">
+                    &times;
+                </button>
+
                 <span class="panel-eyebrow">PRODUCT COLLECTION</span>
 
-                <h3 id="panelProductName">LUX Mirror</h3>
+                <!-- Product logo -->
+                <img id="panelProductName" class="product-logo" src="assets/img/lux-mirror-text-logo.webp"
+                    alt="LUX Mirror">
 
-                <p id="productDescription">
-                    Explore the LUX mirror from every angle.
+                <!-- Tagline -->
+                <h4 class="product-tagline" id="productTagline">
+                    Slim by Design. Brilliant by Nature.
+                </h4>
+
+                <!-- Short description -->
+                <p id="productDescription" class="product-description">
+                    Experience a new level of bathroom luxury with LUX,
+                    an ultra-slim illuminated mirror designed to combine
+                    refined aesthetics with exceptional lighting.
                 </p>
+
+                <!-- Key features -->
+                <ul class="product-features" id="productFeatures">
+                    <li>Ultra-slim 0.4-inch profile</li>
+                    <li>Uniform, brilliant LED illumination</li>
+                    <li>Customizable LED layouts and lighting tones</li>
+                    <li>Made-to-order sizing and designs</li>
+                </ul>
 
                 <div class="viewer-divider"></div>
-
-                <p class="interaction-title">INTERACTIVE 3D PREVIEW</p>
-                <p class="interaction-description">
-                    Rotate the model to inspect its design from different angles.
-                    Zoom in for a closer look.
-                </p>
 
                 <button type="button" class="back-button" id="backToCollection">
                     Back to collection

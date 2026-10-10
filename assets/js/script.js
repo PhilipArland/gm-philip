@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const viewer = document.getElementById("viewer");
     const modelCanvas = document.getElementById("modelCanvas");
-    const productName = document.getElementById("productName");
+    const productName = document.getElementById("panelProductName");
+    const productTagline = document.getElementById("productTagline");
+    const productFeatures = document.getElementById("productFeatures");
     const productDescription = document.getElementById("productDescription");
     const closeButton = document.getElementById("closeViewer");
     const hotspots = document.querySelectorAll(".hotspot");
@@ -10,55 +12,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const products = [
         {
-            name: "LUX Mirror",
+            name: "LUX",
+            logo: "assets/img/lux-mirror-text-logo.webp",
             model: "assets/models/lux.glb",
-            description: "Explore the LUX mirror from every angle."
+
+            tagline: "Slim by Design. Brilliant by Nature.",
+
+            description:
+                "Experience a new level of bathroom luxury with LUX, an ultra-slim illuminated mirror designed to combine refined aesthetics with exceptional lighting.",
+
+            features: [
+                "Ultra-slim 0.4-inch profile",
+                "Uniform, brilliant LED illumination",
+                "Customizable LED layouts and lighting tones",
+                "Made-to-order sizing and designs"
+            ]
         },
         {
-            name: "ECLIPSE Mirror",
-            model: "assets/models/eclipse.glb",
-            description: "Explore the ECLIPSE mirror from every angle."
-        },
-        {
-            name: "LUMIÈRE Mirror",
-            model: "assets/models/lumiere.glb",
-            description: "Explore the LUMIÈRE mirror from every angle."
-        },
-        {
-            name: "ALLURE Mirror",
+            name: "ALLURE",
+            logo: "assets/img/allure-mirror-text-logo.webp",
             model: "assets/models/allure.glb",
-            description: "Explore the ALLURE mirror from every angle."
-        },
-        {
-            name: "HOLLYWOOD Mirror",
-            model: "assets/models/hollywood.glb",
-            description: "Explore the HOLLYWOOD mirror from every angle."
-        },
-        {
-            name: "ETCH Mirror",
-            model: "assets/models/etch.glb",
-            description: "Explore the ETCH mirror from every angle."
-        },
-        {
-            name: "LED Strip Mirror",
-            model: "assets/models/led-strip.glb",
-            description: "Explore the LED strip mirror from every angle."
-        },
-        {
-            name: "Bevel & Faucet Demo",
-            model: "assets/models/bevel-faucet.glb",
-            description: "Explore the bevel and faucet demonstration model."
+
+            tagline: "Framed in Elegance. Designed to Shine.",
+
+            description:
+                "The ALLURE collection combines a refined brushed aluminum frame with integrated LED illumination. Available in versatile shapes and sophisticated finishes, it brings a polished, contemporary look to bathrooms and interior spaces.",
+
+            features: [
+                "Brushed aluminum frame",
+                "Integrated LED lighting",
+                "Round, oval, rectangular, and custom designs",
+                "Black, silver, gold, and bronze finishes"
+            ]
         }
     ];
 
     function openProduct(index) {
         const product = products[index];
+        productTagline.textContent = product.tagline;
+
+        productFeatures.replaceChildren(
+            ...product.features.map((feature) => {
+                const li = document.createElement("li");
+                li.textContent = feature;
+                return li;
+            })
+        );
 
         if (!product) return;
 
         previouslyFocusedElement = document.activeElement;
 
-        productName.textContent = product.name;
+        productName.src = product.logo;
+        productName.alt = `${product.name} Mirror`;
         productDescription.textContent = product.description;
 
         // Load the selected 3D model.
@@ -101,6 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     closeButton.addEventListener("click", closeViewer);
+    const backButton = document.getElementById("backToCollection");
+    backButton.addEventListener("click", closeViewer);
 
     document.addEventListener("keydown", (event) => {
         if (
