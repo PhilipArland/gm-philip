@@ -51,7 +51,7 @@ body {
     z-index: 2;
     padding: 0;
     /* border: 2px solid transparent; */
-    border: 2px solid #071544;
+    border: 2px solid red;
     background: transparent;
     cursor: pointer;
     transition:
@@ -81,8 +81,8 @@ body {
 .m1,
 .m2,
 .m3 {
-    top: 15%;
-    /* top: 16%; */
+    /* top: 15%; */
+    top: 16%;
     height: 22%;
 }
 
@@ -102,12 +102,12 @@ body {
 }
 
 .m4 {
-    top: 15%;
-    /* top: 15.8%; */
+    /* top: 15%; */
+    top: 15.8%;
     left: 68.8%;
     width: 19%;
-    height: 21.3%;
-    /* height: 21.8%; */
+    /* height: 21.3%; */
+    height: 21.8%;
     border-radius: 50%;
 }
 
