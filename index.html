@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grand Mirrors | Product Viewers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <section class="intro text-center px-3 py-4">
+            <h1 class="mb-3 fw-bold">Explore Our Mirror Collection</h1>
+            <p class="text-muted mt-3 mb-0 tip">
+                <span>✦</span> Select a mirror to open its product viewer
+            </p>
+        </section>
+
+        <section class="container-fluid px-2 px-md-4 pb-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xxl-10">
+                    <div class="display position-relative w-100" id="display">
+                        <img src="grandmirrors.png" alt="Grand Mirrors product display" class="img-fluid w-100">
+                        <button class="hotspot m1" data-product="0" aria-label="View LUX mirror"></button>
+                        <button class="hotspot m2" data-product="1" aria-label="View ECLIPSE mirror"></button>
+                        <button class="hotspot m3" data-product="2" aria-label="View LUMIÈRE mirror"></button>
+                        <button class="hotspot m4" data-product="3" aria-label="View ALLURE mirror"></button>
+                        <button class="hotspot m5" data-product="4" aria-label="View HOLLYWOOD mirror"></button>
+                        <button class="hotspot m6" data-product="5" aria-label="View ETCH mirror"></button>
+                        <button class="hotspot m7" data-product="6" aria-label="View LED strip mirror"></button>
+                        <button class="hotspot m8" data-product="7"
+                            aria-label="View bevel and faucet demo mirror"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="viewer" id="viewer" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="productName">
+
+        <div class="container-fluid h-100 p-0">
+            <div class="row g-0 h-100">
+                <div class="col-12 col-md-7 viewer-stage" id="viewerStage">
+                    <div class="stage-label">
+                        GRAND MIRRORS · PRODUCT PREVIEW
+                    </div>
+                    <model-viewer id="modelCanvas" src="lux.glb" alt="LUX mirror 3D model" camera-controls
+                        touch-action="pan-y" auto-rotate shadow-intensity="1" interaction-prompt="auto">
+                    </model-viewer>
+                    <div class="drag-hint">
+                        Drag to rotate · Scroll or pinch to zoom
+                    </div>
+                </div>
+
+                <aside class="col-12 col-md-5 viewer-panel">
+                    <button class="close-viewer" id="closeViewer" aria-label="Close 3D view">×</button>
+                    <div class="eyebrow">Grand Mirrors Collection</div>
+                    <h2 id="productName">LUX Mirror</h2>
+                    <p id="productDescription"></p>
+                    <div class="spec-label">Frame finish</div>
+                    <div class="finish-list">
+                        <button class="finish active" data-finish="Gold">
+                            <span class="swatch"></span>Gold
+                        </button>
+                        <button class="finish" data-finish="Silver">
+                            <span class="swatch"></span>Silver
+                        </button>
+                        <button class="finish" data-finish="Black">
+                            <span class="swatch"></span>Black
+                        </button>
+                    </div>
+                    <button class="primary" id="inquire">
+                        Inquire About This Design
+                    </button>
+
+                    <div class="viewer-note">
+                        Interact with the 3D model to explore this design.
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JavaScript bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
