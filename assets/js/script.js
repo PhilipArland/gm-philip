@@ -1,145 +1,121 @@
-(() => {
-    'use strict';
+document.addEventListener("DOMContentLoaded", () => {
+    const viewer = document.getElementById("viewer");
+    const modelCanvas = document.getElementById("modelCanvas");
+    const productName = document.getElementById("productName");
+    const productDescription = document.getElementById("productDescription");
+    const closeButton = document.getElementById("closeViewer");
+    const hotspots = document.querySelectorAll(".hotspot");
+
+    let previouslyFocusedElement = null;
 
     const products = [
         {
-            name: 'LUX Mirror',
-            description: 'A clean rectangular mirror design with a luminous border. A stylish option for modern bathrooms, bedrooms, and dressing areas.',
-            model: 'lux.glb'
+            name: "LUX Mirror",
+            model: "assets/models/lux.glb",
+            description: "Explore the LUX mirror from every angle."
         },
         {
-            name: 'ECLIPSE Mirror',
-            description: 'A minimalist rectangular mirror with a distinctive central detail. Ideal for contemporary interiors.',
-            model: 'eclipse.glb'
+            name: "ECLIPSE Mirror",
+            model: "assets/models/eclipse.glb",
+            description: "Explore the ECLIPSE mirror from every angle."
         },
         {
-            name: 'LUMIÈRE Mirror',
-            description: 'A softly rounded rectangular silhouette that creates a calm, elegant look in your interior.',
-            model: 'lumiere.glb'
+            name: "LUMIÈRE Mirror",
+            model: "assets/models/lumiere.glb",
+            description: "Explore the LUMIÈRE mirror from every angle."
         },
         {
-            name: 'ALLURE Mirror',
-            description: 'A graceful arched silhouette with a refined frame.',
-            model: 'allure.glb'
+            name: "ALLURE Mirror",
+            model: "assets/models/allure.glb",
+            description: "Explore the ALLURE mirror from every angle."
         },
         {
-            name: 'HOLLYWOOD Mirror',
-            description: 'A vanity-style mirror with perimeter bulb lighting details.',
-            model: 'hollywood.glb'
+            name: "HOLLYWOOD Mirror",
+            model: "assets/models/hollywood.glb",
+            description: "Explore the HOLLYWOOD mirror from every angle."
         },
         {
-            name: 'ETCH Mirror',
-            description: 'A decorative mirror featuring etched-style corner detailing.',
-            model: 'etch.glb'
+            name: "ETCH Mirror",
+            model: "assets/models/etch.glb",
+            description: "Explore the ETCH mirror from every angle."
         },
         {
-            name: 'LED Strip Mirror',
-            description: 'A geometric design featuring vertical light elements.',
-            model: 'led-strip.glb'
+            name: "LED Strip Mirror",
+            model: "assets/models/led-strip.glb",
+            description: "Explore the LED strip mirror from every angle."
         },
         {
-            name: 'Bevel & Faucet Demo Mirror',
-            description: 'A classic square mirror used to demonstrate a bevelled edge and faucet pairing.',
-            model: 'bevel-faucet.glb'
+            name: "Bevel & Faucet Demo",
+            model: "assets/models/bevel-faucet.glb",
+            description: "Explore the bevel and faucet demonstration model."
         }
     ];
 
-    const viewer = document.getElementById('viewer');
-    const modelCanvas = document.getElementById('modelCanvas');
-    const nameEl = document.getElementById('productName');
-    const descEl = document.getElementById('productDescription');
-    const closeButton = document.getElementById('closeViewer');
-
-    let current = 0;
-    let finish = 'Gold';
-    let lastTrigger = null;
-
-    function openProduct(index, trigger) {
+    function openProduct(index) {
         const product = products[index];
+
         if (!product) return;
 
-        current = index;
-        finish = 'Gold';
-        lastTrigger = trigger;
+        previouslyFocusedElement = document.activeElement;
 
-        nameEl.textContent = product.name;
-        descEl.textContent = product.description;
+        productName.textContent = product.name;
+        productDescription.textContent = product.description;
 
-        // Load the selected product's 3D model.
-        if (modelCanvas.getAttribute('src') !== product.model) {
-            modelCanvas.setAttribute('src', product.model);
-        }
+        // Load the selected 3D model.
+        modelCanvas.src = product.model;
+        modelCanvas.alt = `3D model of ${product.name}`;
 
-        document.querySelectorAll('.finish').forEach(button => {
-            button.classList.toggle(
-                'active',
-                button.dataset.finish === finish
-            );
-        });
-
-        viewer.classList.add('open');
-        viewer.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+        viewer.classList.add("is-open");
+        viewer.setAttribute("aria-hidden", "false");
+        viewer.inert = false;
+        document.body.classList.add("viewer-open");
 
         closeButton.focus();
     }
 
-    function closeProduct() {
-        viewer.classList.remove('open');
-        viewer.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+    function closeViewer() {
+        if (!viewer.classList.contains("is-open")) return;
 
-        if (lastTrigger) lastTrigger.focus();
+        viewer.classList.remove("is-open");
+        viewer.setAttribute("aria-hidden", "true");
+        viewer.inert = true;
+        document.body.classList.remove("viewer-open");
+
+        // Stop auto-rotation and release the current model.
+        modelCanvas.pause();
+        modelCanvas.removeAttribute("src");
+
+        if (
+            previouslyFocusedElement &&
+            document.contains(previouslyFocusedElement)
+        ) {
+            previouslyFocusedElement.focus();
+        }
     }
 
-    document.querySelectorAll('.hotspot').forEach(button => {
-        button.addEventListener('click', () => {
-            openProduct(Number(button.dataset.product), button);
+    hotspots.forEach((hotspot) => {
+        hotspot.addEventListener("click", () => {
+            const index = Number(hotspot.dataset.product);
+            openProduct(index);
         });
     });
 
-    closeButton.addEventListener('click', closeProduct);
+    closeButton.addEventListener("click", closeViewer);
 
-    // Close when the user clicks the backdrop.
-    viewer.addEventListener('click', event => {
-        if (event.target === viewer) closeProduct();
-    });
-
-    // Close with Escape.
-    window.addEventListener('keydown', event => {
+    document.addEventListener("keydown", (event) => {
         if (
-            event.key === 'Escape' &&
-            viewer.classList.contains('open')
+            event.key === "Escape" &&
+            viewer.classList.contains("is-open")
         ) {
-            closeProduct();
+            closeViewer();
         }
     });
 
-    document.querySelectorAll('.finish').forEach(button => {
-        button.addEventListener('click', () => {
-            finish = button.dataset.finish;
-
-            document.querySelectorAll('.finish').forEach(item => {
-                item.classList.toggle('active', item === button);
-            });
-        });
-    });
-
-    document.getElementById('inquire').addEventListener('click', () => {
-        const subject = encodeURIComponent(
-            `Inquiry about ${products[current].name}`
+    // Log model loading errors to help diagnose incorrect file paths.
+    modelCanvas.addEventListener("error", () => {
+        console.error(
+            "Unable to load the 3D model:",
+            modelCanvas.src
         );
-
-        const body = encodeURIComponent(
-            `Hello Grand Mirrors,\n\n` +
-            `I am interested in the ${products[current].name}.\n` +
-            `Preferred finish: ${finish}.\n\n` +
-            `Please provide pricing, dimensions, and availability.\n\n` +
-            `Thank you.`
-        );
-
-        // Replace with your actual business email address.
-        window.location.href =
-            `mailto:YOUR_EMAIL@example.com?subject=${subject}&body=${body}`;
     });
-})();
+});
