@@ -152,31 +152,6 @@ body.viewer-open {
 }
 
 /* HEADER */
-.viewer-header {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
-    background: #fff;
-}
-
-.viewer-brand {
-    margin-bottom: 0.25rem;
-    color: #a7802b;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-}
-
-.viewer-header h2 {
-    margin: 0;
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    font-weight: 800;
-}
-
 .viewer-close {
     position: absolute;
     top: 20px;
@@ -201,6 +176,11 @@ body.viewer-open {
 }
 
 /* DESKTOP: LEFT AND RIGHT */
+model-viewer {
+    --progress-bar-color: transparent;
+    --progress-bar-height: 0px;
+}
+
 .viewer-content {
     display: grid;
     grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.85fr);
@@ -250,7 +230,8 @@ body.viewer-open {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: safe center;
+    overflow: auto;
     min-width: 0;
     padding: clamp(1.5rem, 4vw, 3.5rem);
     overflow-y: auto;
@@ -314,10 +295,6 @@ body.viewer-open {
 
 /* MOBILE: STACK VERTICALLY */
 @media (max-width: 767.98px) {
-    .viewer-header {
-        padding: 0.75rem 1rem;
-    }
-
     .viewer-content {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
@@ -330,6 +307,7 @@ body.viewer-open {
     .viewer-stage {
         height: auto;
         min-height: 280px;
+        padding: 40px;
     }
 
     #modelCanvas {

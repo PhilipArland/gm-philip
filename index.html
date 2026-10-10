@@ -52,39 +52,29 @@
         </section>
     </main>
 
-    <!-- Full-screen 3D product viewer -->
     <section class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="productName" aria-hidden="true"
         inert>
-
-
         <div class="viewer-content">
             <div class="viewer-stage">
                 <model-viewer id="modelCanvas" src="assets/models/lux.glb" alt="3D mirror model" camera-controls
                     auto-rotate shadow-intensity="1" interaction-prompt="auto" touch-action="pan-y" exposure="1">
+                    <div slot="progress-bar"></div>
                 </model-viewer>
 
                 <p class="drag-hint">
                     Drag to rotate · Scroll or pinch to zoom
                 </p>
             </div>
-
-            <!-- RIGHT: PRODUCT DETAILS -->
             <aside class="viewer-panel">
                 <button type="button" class="viewer-close" id="closeViewer" aria-label="Close product viewer">
                     &times;
                 </button>
-
                 <span class="panel-eyebrow">PRODUCT COLLECTION</span>
-
-                <!-- Product logo -->
                 <img id="panelProductName" class="product-logo" src="assets/img/lux-mirror-text-logo.webp"
                     alt="LUX Mirror">
-
-                <!-- Tagline -->
                 <h4 class="product-tagline" id="productTagline">
                     Slim by Design. Brilliant by Nature.
                 </h4>
-
                 <!-- Short description -->
                 <p id="productDescription" class="product-description">
                     Experience a new level of bathroom luxury with LUX,
