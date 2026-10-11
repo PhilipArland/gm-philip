@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grand Mirrors LUX Mirror | Request a quote</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #17232b;
+            --muted: #5d6b75;
+            --line: #e1e6e9;
+            --brand: #0e5f66;
+            --brand-d: #0a474d;
+            --tint: #eef7f7;
+        }
+
+        body {
+            font-family: 'Figtree', system-ui, sans-serif;
+            color: var(--ink);
+            background: #fff;
+        }
+
+        .site {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: clamp(1.6rem, 3vw, 2.1rem);
+            letter-spacing: -.02em;
+        }
+
+        .lead2 {
+            color: var(--muted);
+            max-width: 46ch;
+        }
+
+        .stage {
+            background: radial-gradient(circle at 50% 30%, #3b474f, #151c21 80%);
+            border-radius: 1.25rem;
+            padding: 1rem 1rem 1.25rem;
+            color: #cfd8de;
+        }
+
+        @media (min-width:992px) {
+            .stage {
+                position: sticky;
+                top: 1.25rem;
+            }
+        }
+
+        .stage svg {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .stage p {
+            margin: 0 0 .25rem;
+            font-size: .9rem;
+            text-align: center;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .step:first-of-type {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+        .num {
+            flex: none;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--ink);
+            color: #fff;
+            font-weight: 600;
+            display: grid;
+            place-items: center;
+        }
+
+        .step-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .step h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: .15rem 0 .2rem;
+        }
+
+        .help {
+            color: var(--muted);
+            font-size: .92rem;
+            margin-bottom: .9rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            font-size: .92rem;
+            margin-bottom: .3rem;
+        }
+
+        .form-control,
+        .form-select {
+            border-color: #cfd6db;
+            padding: .6rem .8rem;
+            border-radius: .6rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 .2rem rgba(14, 95, 102, .18);
+        }
+
+        .sub {
+            margin-top: .9rem;
+            padding: .9rem;
+            background: #f6f8f9;
+            border-radius: .8rem;
+        }
+
+        .total {
+            color: var(--muted);
+            font-size: .92rem;
+            margin-top: .6rem;
+        }
+
+        .warn {
+            color: #a4580a;
+            font-size: .88rem;
+            margin-top: .4rem;
+        }
+
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+            gap: .6rem;
+            margin-bottom: 1rem;
+        }
+
+        .tiles.wide {
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        }
+
+        .tiles label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: .2rem;
+            height: 100%;
+            padding: .7rem .5rem;
+            border: 1.5px solid var(--line);
+            border-radius: .8rem;
+            cursor: pointer;
+            font-size: .88rem;
+            line-height: 1.25;
+            background: #fff;
+        }
+
+        .tiles label:hover {
+            border-color: #b6c1c8;
+        }
+
+        .tiles input:checked+label {
+            border-color: var(--brand);
+            background: var(--tint);
+        }
+
+        .tiles input:focus-visible+label {
+            box-shadow: 0 0 0 .2rem rgba(14, 95, 102, .3);
+        }
+
+        .tiles b {
+            font-weight: 600;
+            font-size: .92rem;
+        }
+
+        .tiles small {
+            color: var(--muted);
+        }
+
+        .tiles svg {
+            width: 54px;
+            height: 54px;
+        }
+
+        .dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, .15);
+        }
+
+        .btn-main {
+            background: var(--brand);
+            color: #fff;
+            font-weight: 600;
+            border: 0;
+            border-radius: .7rem;
+            padding: .9rem 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .btn-main:hover,
+        .btn-main:focus-visible {
+            background: var(--brand-d);
+            color: #fff;
+        }
+
+        .brief {
+            color: var(--muted);
+            font-size: .92rem;
+            margin: .6rem 0 0;
+            text-align: center;
+        }
+
+        #result {
+            display: none;
+            background: var(--tint);
+            border-radius: 1rem;
+            padding: 1.25rem;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            font-family: inherit;
+            font-size: .92rem;
+            margin: 0;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--brand);
+            border-color: var(--brand);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="logo" href="#">Your Brand</a>
+            <span class="text-secondary small">Free quote. No payment needed.</span>
+        </div>
+    </header>
+
+    <main class="container py-4 py-lg-5">
+        <div class="mb-4 mb-lg-5">
+            <h1 class="mb-2">Grand Mirrors LUX Mirror</h1>
+            <p class="lead2 mb-0">Choose your size and options. The preview updates as you go. Send your request and we
+                will reply with a price.</p>
+        </div>
+
+        <div class="row g-4 g-lg-5">
+            <!-- LEFT: product mirror -->
+            <div class="col-12 col-lg-6">
+                <div class="stage">
+                    <p id="areaNote"></p>
+                    <svg id="preview" viewBox="0 0 500 500" role="img" aria-label="Preview of your mirror"></svg>
+                    <p class="mt-2" style="font-size:.8rem;opacity:.7">Preview is illustrative.</p>
+                </div>
+            </div>
+
+            <!-- RIGHT: inputs -->
+            <div class="col-12 col-lg-6">
+                <form id="quoteForm" novalidate>
+
+                    <section class="step">
+                        <div class="num">1</div>
+                        <div class="step-body">
+                            <h2>Mirror Size</h2>
+                            <div class="row g-3">
+                                <div class="col-6"><label class="form-label" for="w">Width (in)</label>
+                                    <input type="number" id="w" class="form-control" min="4" max="150" step="0.25"
+                                        value="15" inputmode="decimal" required>
+                                    <div class="invalid-feedback">Enter 4 to 150.</div>
+                                </div>
+                                <div class="col-6"><label class="form-label" for="h">Height (in)</label>
+                                    <input type="number" id="h" class="form-control" min="4" max="96" step="0.25"
+                                        value="15" inputmode="decimal" required>
+                                    <div class="invalid-feedback">Enter 4 to 96.</div>
+                                </div>
+                            </div>
+                            <div class="total">Total Area (sq. ft.): <b id="area">1.56</b></div>
+                        </div>
+                    </section>
+
+                    <section class="step">
+                        <div class="num">2</div>
+                        <div class="step-body">
+                            <h2>Select Mirror Light</h2>
+                            <label class="form-label" for="ledw">LED Bar Width</label>
+                            <select id="ledw" class="form-select mb-3">
+                                <option value="0.5">0.5" (13mm)</option>
+                                <option value="1" selected>1" (25mm)</option>
+                                <option value="1.5">1.5" (38mm)</option>
+                                <option value="2">2" (50mm)</option>
+                            </select>
+                            <div class="form-label">LED Light Layout</div>
+                            <div class="tiles" id="layouts" role="radiogroup" aria-label="LED Light Layout"></div>
+                            <div class="form-label">Light Strip Options</div>
+                            <div class="tiles wide mb-2" id="ledcorner" role="radiogroup"
+                                aria-label="Light Strip Options"></div>
+                            <div class="sub mb-3" id="ledRadBox" style="display:none">
+                                <div class="form-label">Choose Radius</div>
+                                <div class="tiles mb-2" id="ledrad" role="radiogroup"
+                                    aria-label="Light strip corner radius"></div>
+                                <div class="row g-3" id="lcrBox" style="display:none">
+                                    <div class="col-7"><label class="form-label" for="lcr">Enter radius</label><input
+                                            type="number" id="lcr" class="form-control" min="0.1" step="0.1" value="1">
+                                        <div class="invalid-feedback">Enter a radius.</div>
+                                    </div>
+                                    <div class="col-5"><label class="form-label" for="lcu">Unit</label><select id="lcu"
+                                            class="form-select">
+                                            <option value="in">inch</option>
+                                            <option value="mm">mm</option>
+                                        </select></div>
+                                </div>
+                                <div class="help mb-0 mt-2">Corner radius shows on layouts with corners, such as Model
+                                    C.</div>
+                            </div>
+                            <div class="form-label">LED Light Color</div>
+                            <div class="tiles wide mb-0" id="colors" role="radiogroup" aria-label="LED Light Color">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="step">
+                        <div class="num">3</div>
+                        <div class="step-body">
+                            <h2>Bevel and Corner Options</h2>
+                            <div class="form-label">Corners</div>
+                            <div class="tiles wide mb-2" id="ctype" role="radiogroup" aria-label="Corners"></div>
+                            <div class="sub" id="radiusBox" style="display:none">
+                                <div class="form-label">Choose Radius</div>
+                                <div class="tiles mb-2" id="radius" role="radiogroup" aria-label="Choose Radius"></div>
+                                <div class="row g-3" id="crBox" style="display:none">
+                                    <div class="col-7"><label class="form-label" for="cr">Enter radius</label><input
+                                            type="number" id="cr" class="form-control" min="0.1" step="0.1" value="1">
+                                        <div class="invalid-feedback">Enter a radius.</div>
+                                    </div>
+                                    <div class="col-5"><label class="form-label" for="cru">Unit</label><select id="cru"
+                                            class="form-select">
+                                            <option value="in">inch</option>
+                                            <option value="mm">mm</option>
+                                        </select></div>
+                                </div>
+                                <div class="warn" id="radWarn"></div>
+                            </div>
+                            <div class="form-label mt-3">Beveled Edge</div>
+                            <div class="tiles mb-1" id="bevels" role="radiogroup" aria-label="Beveled Edge"></div>
+                            <div class="help mb-0">A bevel is a slanted, polished cut around the glass edge. Choose None
+                                for a flat edge.</div>
+                        </div>
+                    </section>
+
+                    <section class="step">
+                        <div class="num">4</div>
+                        <div class="step-body">
+                            <h2>Select Frame</h2>
+                            <label class="form-label" for="frame">Frame</label>
+                            <select id="frame" class="form-select">
+                                <option value="">None</option>
+                                <option>MARBLE Frames</option>
+                                <option>Walnut Frames</option>
+                                <option>Brass Frames</option>
+                                <option>Stainless Steel Frames</option>
+                            </select>
+                            <div id="frameOpts" style="display:none">
+                                <label class="form-label mt-3" for="frameVar" id="frameVarLbl">Frame</label>
+                                <select id="frameVar" class="form-select"></select>
+                                <div id="coatBox" style="display:none">
+                                    <label class="form-label mt-3" for="coat">Brass Coating</label>
+                                    <select id="coat" class="form-select">
+                                        <option>Brass, uncoated (sensitive to oxidation)</option>
+                                        <option>Brass with glossy coating</option>
+                                        <option>Brass with matte coating</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="step">
+                        <div class="num">5</div>
+                        <div class="step-body">
+                            <h2>Other Options</h2>
+                            <div class="row g-2">
+                                <div class="col-sm-6">
+                                    <div class="form-check"><input class="form-check-input addon" type="checkbox"
+                                            id="pro" value="Grand Mirrors LUX Pro"><label class="form-check-label"
+                                            for="pro">Grand Mirrors LUX Pro</label></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-check"><input class="form-check-input addon" type="checkbox"
+                                            id="defogger" value="Defogger"><label class="form-check-label"
+                                            for="defogger">Defogger</label></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-check"><input class="form-check-input addon" type="checkbox"
+                                            id="night" value="Night Light"><label class="form-check-label"
+                                            for="night">Night Light</label></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-check"><input class="form-check-input addon" type="checkbox"
+                                            id="touchless" value="Touchless On-Off"><label class="form-check-label"
+                                            for="touchless">Touchless On-Off</label></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-check"><input class="form-check-input addon" type="checkbox"
+                                            id="backlight" value="Backlight"><label class="form-check-label"
+                                            for="backlight">Backlight</label></div>
+                                </div>
+                            </div>
+                            <div class="sub" id="dfBox" style="display:none">
+                                <div class="form-label">Defogger</div>
+                                <div class="tiles wide mb-2" id="dfshape" role="radiogroup" aria-label="Defogger shape">
+                                </div>
+                                <div class="row g-3" id="dfCustom" style="display:none">
+                                    <div class="col-4"><label class="form-label" for="dfw">Defogger Width</label><input
+                                            type="number" id="dfw" class="form-control" min="1" step="0.25" value="10">
+                                        <div class="invalid-feedback">Required.</div>
+                                    </div>
+                                    <div class="col-4"><label class="form-label" for="dfh">Defogger Height</label><input
+                                            type="number" id="dfh" class="form-control" min="1" step="0.25" value="8">
+                                        <div class="invalid-feedback">Required.</div>
+                                    </div>
+                                    <div class="col-4"><label class="form-label" for="dfu">Unit</label><select id="dfu"
+                                            class="form-select">
+                                            <option value="in">inch</option>
+                                            <option value="mm">mm</option>
+                                        </select></div>
+                                </div>
+                                <div class="warn" id="dfWarn"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="step">
+                        <div class="num">6</div>
+                        <div class="step-body">
+                            <h2>Where should we send your quote?</h2>
+                            <div class="row g-3 mt-0">
+                                <div class="col-sm-6"><label class="form-label" for="name">Your name</label><input
+                                        id="name" class="form-control" required autocomplete="name">
+                                    <div class="invalid-feedback">Please enter your name.</div>
+                                </div>
+                                <div class="col-sm-6"><label class="form-label" for="email">Email</label><input
+                                        type="email" id="email" class="form-control" required autocomplete="email">
+                                    <div class="invalid-feedback">Please enter a valid email.</div>
+                                </div>
+                                <div class="col-sm-6"><label class="form-label" for="phone">Phone
+                                        (optional)</label><input type="tel" id="phone" class="form-control"
+                                        autocomplete="tel"></div>
+                                <div class="col-sm-6"><label class="form-label" for="qty">Quantity</label><input
+                                        type="number" id="qty" class="form-control" min="1" value="1" required>
+                                    <div class="invalid-feedback">At least 1.</div>
+                                </div>
+                                <div class="col-12"><label class="form-label" for="notes">Notes
+                                        (optional)</label><textarea id="notes" class="form-control" rows="3"
+                                        placeholder="Where it will be installed, your deadline, special requests"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <button type="submit" class="btn btn-main w-100">Request my quote</button>
+                    <p class="brief" id="brief"></p>
+                </form>
+
+                <div id="result" class="mt-4" aria-live="polite">
+                    <h2 class="h5 mb-1">Almost done</h2>
+                    <p class="text-secondary mb-3">Press "Send by email" to open your email with everything filled in.
+                        Then press send.</p>
+                    <pre id="summary" class="mb-3"></pre>
+                    <a id="mailBtn" class="btn btn-main me-2" href="#">Send by email</a>
+                    <button type="button" id="copyBtn" class="btn btn-outline-dark">Copy details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        /* Change this to your sales email. */
+        const SALES_EMAIL = "sales@yourcompany.com";
+
+        const $ = id => document.getElementById(id);
+        const esc = s => s.replace(/"/g, "&quot;");
+        const val = n => document.querySelector(`input[name=${n}]:checked`);
+        const inch = (n, u) => u === "mm" ? n / 25.4 : n;
+
+        /* ---------- frame data (store names) ---------- */
+        const MARBLE = [["White Classic", "#f1efe9"], ["Black Classic", "#222"], ["Sand Cream", "#d9c9a9"], ["Green Forest", "#3f6b4f"], ["Gold Brown", "#9a7440"]];
+        const FR = {
+            "MARBLE Frames": [3, 4].flatMap(z => MARBLE.map(([t, c], i) => [`${z}" ${t} (MF${z}${i + 1}0)`, c])),
+            "Walnut Frames": [['American Walnut (AW-410) 0.4" x 1" / 10mm x 23mm', "#5b3a29"]],
+            "Brass Frames": [
+                ['Brass Gold (BW-100) 0.3" x 0.3" / 8mm x 8mm', "#c9a24b"], ['Brass Gold (BW-110) 0.6" x 0.6" / 15mm x 15mm', "#c9a24b"], ['Brass Gold (BW-120) 1" x 1" / 25mm x 25mm', "#c9a24b"],
+                ['Brass Bronze (BN-100) 0.3" x 0.3" / 8mm x 8mm', "#8a5a2b"], ['Brass Bronze (BN-110) 0.6" x 0.6" / 15mm x 15mm', "#8a5a2b"], ['Brass Bronze (BN-120) 1" x 1" / 25mm x 25mm', "#8a5a2b"]],
+            "Stainless Steel Frames": [
+                ['Polished 316 Stainless Steel (SK-110) 0.5" X 0.5" / 13mmx13mm', "#d3d9de"], ['Polished 316 Stainless Steel (SK-120) 0.5" X 1" / 13mmx25mm', "#d3d9de"], ['Polished 316 Stainless Steel (SK-130) 1" X 1" / 25mmx25mm', "#d3d9de"],
+                ['Brushed 316 Stainless Steel (SU-110) 0.5" X 0.5" / 13mmx13mm', "#aeb5bb"], ['Brushed 316 Stainless Steel (SU-120) 0.5" X 1" / 13mmx25mm', "#aeb5bb"], ['Brushed 316 Stainless Steel (SU-130) 1" X 1" / 25mmx25mm', "#aeb5bb"]]
+        };
+
+        /* ---------- geometry ---------- */
+        function rr(x, y, w, h, r) {
+            r = Math.max(0, Math.min(r, w / 2, h / 2));
+            if (!r) return `M${x},${y}H${x + w}V${y + h}H${x}Z`;
+            return `M${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h - r}Q${x + w},${y + h} ${x + w - r},${y + h}H${x + r}Q${x},${y + h} ${x},${y + h - r}V${y + r}Q${x},${y} ${x + r},${y}Z`;
+        }
+        function scal(x, y, w, h, c) {
+            c = Math.max(0, Math.min(c, w / 2, h / 2));
+            return `M${x + c},${y}H${x + w - c}A${c},${c} 0 0 0 ${x + w},${y + c}V${y + h - c}A${c},${c} 0 0 0 ${x + w - c},${y + h}H${x + c}A${c},${c} 0 0 0 ${x},${y + h - c}V${y + c}A${c},${c} 0 0 0 ${x + c},${y}Z`;
+        }
+        function outline(x, y, w, h, t, r, f = rr) {
+            return `<path fill-rule="evenodd" d="${f(x, y, w, h, r)} ${f(x + t, y + t, w - 2 * t, h - 2 * t, Math.max(0, r - t))}"/>`;
+        }
+        function panels(m, x, w) {
+            if (m !== "E") return [[x, w]];
+            const gp = Math.max(4, w * 0.02), pw = (w - 2 * gp) / 3;
+            return [0, 1, 2].map(i => [x + i * (pw + gp), pw]);
+        }
+        /* Frame (ex > 0) keeps square corners square: radius only grows when the glass is already rounded */
+        function glassPath(m, x, y, w, h, r, ex = 0) {
+            return panels(m, x, w).map(([px, pw]) => rr(px - ex, y - ex, pw + 2 * ex, h + 2 * ex, r > 0 ? r + ex : 0)).join("");
+        }
+        function strips(m, x, y, w, h, bar, g, lr) {
+            switch (m) {
+                case "A": return `<path d="${rr(x + g, y + g, bar, h - 2 * g, bar / 3)}"/><path d="${rr(x + w - g - bar, y + g, bar, h - 2 * g, bar / 3)}"/>`;
+                case "B": return `<path d="${rr(x + g, y + g, w - 2 * g, bar, bar / 3)}"/><path d="${rr(x + g, y + h - g - bar, w - 2 * g, bar, bar / 3)}"/>`;
+                case "C": return outline(x + g, y + g, w - 2 * g, h - 2 * g, bar, lr);
+                case "D": {
+                    const t = y + g, hh = h - 2 * g;
+                    return [x + g, x + w / 2 - bar / 2, x + w - g - bar].map(bx => `<path d="${rr(bx, t, bar, hh, bar / 3)}"/>`).join("");
+                }
+                case "E": {
+                    const t = y + g, hh = h - 2 * g, p = panels("E", x, w);
+                    const xs = [x + g, (p[0][0] + p[0][1] + p[1][0]) / 2 - bar / 2, (p[1][0] + p[1][1] + p[2][0]) / 2 - bar / 2, x + w - g - bar];
+                    return xs.map(bx => `<path d="${rr(bx, t, bar, hh, bar / 3)}"/>`).join("");
+                }
+                case "F": return outline(x + g, y + g, w - 2 * g, h - 2 * g, bar, Math.min(w, h) * 0.14, scal);
+            }
+        }
+
+        /* ---------- build option tiles ---------- */
+        function tiles(id, name, items, checked = 0) {
+            $(id).innerHTML = items.map(([v, b, small, icon, sum], i) => `
+    <div><input class="btn-check" type="radio" name="${name}" id="${name}${i}" value="${v}" data-sum="${esc(sum || b + (small ? " " + small : ""))}" ${i === checked ? "checked" : ""}>
+    <label for="${name}${i}">${icon || ""}<b>${b}</b>${small ? `<small>${small}</small>` : ""}</label></div>`).join("");
+        }
+        const LAY = [["A", "Model A"], ["B", "Model B"], ["C", "Model C"], ["D", "Model D"], ["E", "Model E", "(Trifold)"], ["F", "Model F"]];
+        tiles("layouts", "layout", LAY.map(([k, b, s]) => [k, b, s, `<svg viewBox="0 0 60 60" aria-hidden="true"><g fill="#d3dbe0">${glassPath(k, 6, 6, 48, 48, 0)}</g><g fill="#e8a317">${strips(k, 6, 6, 48, 48, 3, 3.5, 0)}</g></svg>`, b + (s ? " " + s : "")]));
+        const cornerIcon = d => `<svg viewBox="0 0 54 54" aria-hidden="true"><path d="${d}" fill="none" stroke="#e8a317" stroke-width="7"/></svg>`;
+        tiles("ledcorner", "ledcorner", [["square", "Square Corner LED", "", cornerIcon("M10,46V10H46")], ["rounded", "Rounded Corner LED", "", cornerIcon("M10,46V24Q10,10 24,10H46")]]);
+        tiles("colors", "color", [["#ffbf72", "Premium Warm", "(2700K)"], ["#ffd59f", "Premium Warm", "(3000K)"], ["#fff0dc", "Premium Natural", "(4000K)"], ["#e4f0ff", "Premium Cool", "(6000K)"], ["#d2e6ff", "Premium Cool", "(6500K)"], ["#fff7ea", "Premium True Light", "(2700K-6200K)"]]
+            .map(([c, b, s]) => [c, b, s, `<span class="dot" style="background:${c}"></span>`]), 2);
+        tiles("ledrad", "ledrad", [["2", '2" (50mm)'], ["3", '3" (75mm)'], ["4", '4" (100mm)'], ["custom", "Custom"]]);
+        tiles("ctype", "ctype", [["square", "Square Corners"], ["rounded", "Rounded Corners"]]);
+        tiles("radius", "radius", [["2", '2" (50mm)'], ["3", '3" (75mm)'], ["4", '4" (100mm)'], ["custom", "Custom"]]);
+        tiles("bevels", "bevel", [["0", "None"], ["0.5", 'Small bevel (0.5")'], ["1", 'Medium bevel (1")'], ["1.5", 'Large bevel (1.5")']]);
+        tiles("dfshape", "dfshape", [["rect", 'Rectangle 16" x 12"', "(400mm x 300mm)"], ["oval", 'Oval 24" x 16"', "(600mm x 400mm)"], ["circle", 'Circle 20"', "(500mm) Diameter"], ["custom", "Custom Size"]]);
+
+        /* ---------- frame selects ---------- */
+        $("frame").addEventListener("change", () => {
+            const f = $("frame").value;
+            $("frameOpts").style.display = f ? "block" : "none";
+            $("coatBox").style.display = f === "Brass Frames" ? "block" : "none";
+            if (f) {
+                $("frameVarLbl").textContent = f.replace(" Frames", " Frame");
+                $("frameVar").innerHTML = FR[f].map(([t, c]) => `<option data-c="${c}">${t}</option>`).join("");
+            }
+        });
+
+        /* ---------- live preview ---------- */
+        function cornerRadius() {
+            if (val("ctype").value === "square") return 0;
+            const v = val("radius").value;
+            return v === "custom" ? inch(parseFloat($("cr").value) || 0, $("cru").value) : parseFloat(v);
+        }
+        function ledRadius() {
+            if (val("ledcorner").value !== "rounded") return 0;
+            const v = val("ledrad").value;
+            return v === "custom" ? inch(parseFloat($("lcr").value) || 0, $("lcu").value) : parseFloat(v);
+        }
+        function defogDims() {
+            const v = val("dfshape").value;
+            if (v === "rect") return [16, 12, "rect"];
+            if (v === "oval") return [24, 16, "oval"];
+            if (v === "circle") return [20, 20, "oval"];
+            return [inch(parseFloat($("dfw").value) || 0, $("dfu").value), inch(parseFloat($("dfh").value) || 0, $("dfu").value), "rect"];
+        }
+        function syncUI() {
+            const rounded = val("ctype").value === "rounded", cust = val("radius").value === "custom";
+            $("radiusBox").style.display = rounded ? "block" : "none";
+            $("crBox").style.display = rounded && cust ? "flex" : "none";
+            $("cr").required = rounded && cust;
+            const lrd = val("ledcorner").value === "rounded", lc = val("ledrad").value === "custom";
+            $("ledRadBox").style.display = lrd ? "block" : "none";
+            $("lcrBox").style.display = lrd && lc ? "flex" : "none";
+            $("lcr").required = lrd && lc;
+            const df = $("defogger").checked, dc = val("dfshape").value === "custom";
+            $("dfBox").style.display = df ? "block" : "none";
+            $("dfCustom").style.display = df && dc ? "flex" : "none";
+            $("dfw").required = $("dfh").required = df && dc;
+        }
+        function draw() {
+            syncUI();
+            const m = val("layout").value;
+            const w = parseFloat($("w").value), h = parseFloat($("h").value);
+            const svg = $("preview");
+            if (!(w >= 4 && h >= 4 && w <= 150 && h <= 96)) {
+                svg.innerHTML = `<text x="250" y="250" text-anchor="middle" fill="#cfd8de" font-size="18">Enter a size to see your mirror</text>`;
+                $("areaNote").textContent = ""; $("area").textContent = "-"; $("brief").textContent = ""; return;
+            }
+            $("area").textContent = (w * h / 144).toFixed(2);
+            $("areaNote").textContent = `${w}" × ${h}" (${(w * 2.54).toFixed(0)} × ${(h * 2.54).toFixed(0)} cm)`;
+
+            const s = Math.min(340 / w, 340 / h);
+            const pw = w * s, ph = h * s, x = 250 - pw / 2, y = 240 - ph / 2;
+            const led = val("color").value;
+            const base = Math.min(pw / (m === "E" ? 3 : m === "D" ? 2 : 1), ph);
+            const bar = Math.max(3, Math.min(parseFloat($("ledw").value) * s, base / 7));
+            const g = Math.max(4, Math.min(1.25 * s, base / 7));
+            const lr = Math.min(ledRadius() * s, base / 2.5);
+            const bevel = Math.min(parseFloat(val("bevel").value) * s, 14);
+            const cr = cornerRadius() * s;
+            $("radWarn").textContent = cornerRadius() * 2 > Math.min(w, h) ? "Radius is too large. The maximum is half of the smaller side." : "";
+            const fOpt = $("frameVar").selectedOptions[0];
+            const fc = $("frame").value && fOpt ? fOpt.dataset.c : null;
+            const fw = fc ? ($("frame").value === "MARBLE Frames" ? 10 : 6) : 0;
+
+            let o = `<defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3ebf1"/><stop offset=".45" stop-color="#a5b8c7"/><stop offset=".55" stop-color="#eef4f8"/><stop offset="1" stop-color="#8ea2b2"/></linearGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+    <clipPath id="gc"><path d="${glassPath(m, x, y, pw, ph, cr)}"/></clipPath></defs>`;
+            o += `<g fill="${led}" opacity=".7" filter="url(#blur)">${strips(m, x, y, pw, ph, bar, g, lr)}</g>`;
+            if (fc) o += `<path d="${glassPath(m, x, y, pw, ph, cr, fw)}" fill="${fc}" stroke="rgba(0,0,0,.35)"/>`;
+            o += `<path d="${glassPath(m, x, y, pw, ph, cr)}" fill="url(#glass)"/>`;
+            if (bevel > 0) o += `<path d="${glassPath(m, x + bevel / 2, y + bevel / 2, pw - bevel, ph - bevel, Math.max(0, cr - bevel / 2))}" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="${bevel}"/>`;
+            if ($("defogger").checked) {
+                const [dw, dh, ds] = defogDims();
+                const sw = Math.min(dw * s, pw * .92), sh = Math.min(dh * s, ph * .92);
+                $("dfWarn").textContent = dw > w || dh > h ? "This defogger is larger than your mirror." : "";
+                if (sw > 0 && sh > 0) o += ds === "oval"
+                    ? `<ellipse cx="250" cy="240" rx="${sw / 2}" ry="${sh / 2}" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.6)" stroke-dasharray="5 4"/>`
+                    : `<rect x="${250 - sw / 2}" y="${240 - sh / 2}" width="${sw}" height="${sh}" rx="4" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.6)" stroke-dasharray="5 4"/>`;
+            }
+            o += `<g clip-path="url(#gc)" fill="${led}" stroke="#fff" stroke-opacity=".7" stroke-width=".8">${strips(m, x, y, pw, ph, bar, g, lr)}</g>`;
+            const lx = Math.min(x + pw + fw + 22, 490);
+            o += `<text x="250" y="${Math.min(y + ph + fw + 28, 492)}" text-anchor="middle" fill="#cfd8de" font-size="15">${w}"</text>`;
+            o += `<text x="${lx}" y="240" fill="#cfd8de" font-size="15" text-anchor="middle" transform="rotate(90 ${lx} 240)">${h}"</text>`;
+            svg.innerHTML = o;
+            $("brief").textContent = `${w}" × ${h}" · ${val("layout").dataset.sum} · ${val("color").dataset.sum}`;
+        }
+        document.querySelectorAll("#quoteForm select, #quoteForm input").forEach(el => {
+            el.addEventListener("input", draw); el.addEventListener("change", draw);
+        });
+
+        /* ---------- quote request ---------- */
+        function summaryText() {
+            const sel = id => $(id).options[$(id).selectedIndex].text;
+            const s = n => val(n).dataset.sum;
+            const rounded = val("ctype").value === "rounded";
+            const corners = rounded ? `Rounded Corners, radius ${val("radius").value === "custom" ? $("cr").value + " " + $("cru").value : s("radius")}` : "Square Corners";
+            const frame = $("frame").value ? `${$("frame").value}: ${$("frameVar").value}${$("frame").value === "Brass Frames" ? ", " + $("coat").value : ""}` : "None";
+            const add = [...document.querySelectorAll(".addon:checked")].map(a => a.value === "Defogger"
+                ? "Defogger (" + (val("dfshape").value === "custom" ? `Custom ${$("dfw").value} x ${$("dfh").value} ${$("dfu").value}` : s("dfshape")) + ")" : a.value).join(", ") || "None";
+            return [
+                `Mirror Size: ${$("w").value}" W x ${$("h").value}" H (${$("area").textContent} sq. ft.)`, `Quantity: ${$("qty").value}`,
+                `LED Bar Width: ${sel("ledw")}`, `LED Light Layout: ${s("layout")}`, `Light Strip Options: ${s("ledcorner")}${val("ledcorner").value === "rounded" ? ", radius " + (val("ledrad").value === "custom" ? $("lcr").value + " " + $("lcu").value : s("ledrad")) : ""}`, `LED Light Color: ${s("color")}`,
+                `Corners: ${corners}`, `Beveled Edge: ${s("bevel")}`, `Frame: ${frame}`, `Other Options: ${add}`,
+                "", `Name: ${$("name").value}`, `Email: ${$("email").value}`, `Phone: ${$("phone").value || "-"}`, `Notes: ${$("notes").value || "-"}`
+            ].join("\n");
+        }
+        $("quoteForm").addEventListener("submit", e => {
+            e.preventDefault();
+            e.target.classList.add("was-validated");
+            if (!e.target.checkValidity()) { e.target.querySelector(":invalid").focus(); return; }
+            const t = summaryText();
+            $("summary").textContent = t;
+            $("mailBtn").href = `mailto:${SALES_EMAIL}?subject=${encodeURIComponent("Mirror quote request")}&body=${encodeURIComponent(t)}`;
+            $("result").style.display = "block";
+            $("result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+        $("copyBtn").addEventListener("click", () => {
+            navigator.clipboard.writeText($("summary").textContent).then(() => {
+                $("copyBtn").textContent = "Copied";
+                setTimeout(() => $("copyBtn").textContent = "Copy details", 1500);
+            });
+        });
+        draw();
+    </script>
+</body>
+
+</html>
